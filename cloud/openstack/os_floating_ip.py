@@ -168,10 +168,10 @@ def main():
     if not HAS_SHADE:
         module.fail_json(msg='shade is required for this module')
 
-    if (module.params['project'] and
-            StrictVersion(shade.__version__) <= StrictVersion('1.8.0')):
-        module.fail_json(msg="To utilize project, the installed version of"
-                             "the shade library MUST be > 1.8.0")
+    if (module.params['nat_destination'] and
+            StrictVersion(shade.__version__) < StrictVersion('1.8.0')):
+        module.fail_json(msg="To utilize nat_destination, the installed version of"
+                             "the shade library MUST be >= 1.8.0")
 
     server_name_or_id = module.params['server']
     state = module.params['state']
