@@ -68,7 +68,8 @@ options:
           attach floating IP is on
      required: false
      default: None
-     version_added: "2.1"
+     aliases: ["fixed_network", "internal_network"]
+     version_added: "2.3"
    wait:
      description:
         - When attaching a floating IP address, specify whether we should
@@ -154,7 +155,8 @@ def main():
         floating_ip_address=dict(required=False, default=None),
         reuse=dict(required=False, type='bool', default=False),
         fixed_address=dict(required=False, default=None),
-        nat_destination=dict(required=False, default=None),
+        nat_destination=dict(required=False, default=None,
+                             aliases=['fixed_network', 'internal_network']),
         wait=dict(required=False, type='bool', default=False),
         timeout=dict(required=False, type='int', default=60),
         purge=dict(required=False, type='bool', default=False),
